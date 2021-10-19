@@ -16,13 +16,14 @@
     - name: Check noobaa-db-pg-0
       k8s_info:
         api_key: "{{ openshift_token }}"
+        validate_certs: "{{ insecure_skip_tls_verify }}"
         kind: Pod
         label_selectors:
           - name = noobaa-db-pg-0
         field_selectors:
           - status.phase=Running
         namespace: openshift-storage
-      ignore_errors: true
+      ignore_errors: false
       register: r_ocs_noobaa_status
       tags: quay
 
