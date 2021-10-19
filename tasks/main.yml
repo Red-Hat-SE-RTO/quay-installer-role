@@ -38,6 +38,7 @@
       become: true
       when: 
         - ocs_project_result is failed
+        - r_ocs_noobaa_status.resources[0].status.phase != "Running"
         -  delete_deployment | bool
       tags: quay
 
