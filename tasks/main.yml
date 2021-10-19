@@ -13,17 +13,21 @@
       changed_when: false
       tags: quay
 
-    - name: check if project openshift storage project exists
-      command: "{{ oc_location }} get pods noobaa-db-pg-0 -n openshift-storage | grep Running | wc -l"
-      register: ocs_noobaa_result
+    - name: Check noobaa-db-pg-0
+      k8s_info:
+        kind: Pod
+        label_selectors:
+          - name = noobaa-db-pg-0
+        field_selectors:
+          - status.phase=Running
       ignore_errors: true
-      changed_when: false
+      register: ocs_noobaa_status
       tags: quay
 
-    - name: Print return information from the previous task
-      ansible.builtin.debug:
-        var: ocs_noobaa_result
-        verbosity: 2
+    - name: displaying noobaa-db-pg-0 deployment status
+      debug:
+        var: r_ocs_noobaa_status.resources[0].status.phase
+      ignore_errors: false
 
     - name: End the play 
       meta: end_host
