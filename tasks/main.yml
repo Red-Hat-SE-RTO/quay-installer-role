@@ -46,3 +46,7 @@
       include_tasks: quay.yml
       when: not delete_deployment | bool
       tags: quay
+
+    - name: remove quay deployment
+      include_tasks: remove-quay-deployment.yml
+      when: delete_deployment | bool
