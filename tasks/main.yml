@@ -30,7 +30,7 @@
       debug:
         var: r_ocs_noobaa_status.resources[0].status.phase
       ignore_errors: false
-      when: delete_deployment | bool
+      when: not delete_deployment | bool
       tags: quay
 
     - name: deploy openshift storage operator
@@ -39,10 +39,10 @@
       when: 
         - ocs_project_result is failed
         - r_ocs_noobaa_status.resources[0].status.phase != "Running"
-        -  delete_deployment | bool
+        -  not delete_deployment | bool
       tags: quay
 
     - name: Configure Quay 
       include_tasks: quay.yml
-      when: delete_deployment | bool
+      when: not delete_deployment | bool
       tags: quay
