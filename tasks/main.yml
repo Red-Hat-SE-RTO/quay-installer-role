@@ -20,6 +20,9 @@
           - name = noobaa-db-pg-0
         field_selectors:
           - status.phase=Running
+        host: "{{ openshift_url }}"
+        validate_certs: "{{ insecure_skip_tls_verify }}"
+        api_key: "{{ openshift_token }}"
       ignore_errors: true
       register: ocs_noobaa_status
       tags: quay
