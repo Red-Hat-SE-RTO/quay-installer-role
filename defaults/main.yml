@@ -5,7 +5,8 @@
 config_location: "/tmp/"
 
 # Openshift Login info
-openshift_token: 1234567890
+openshift_username: kubeadmin
+openshift_password: 1234567890
 openshift_url: https://api.ocp4.example.com:6443
 insecure_skip_tls_verify: false
 
