@@ -29,13 +29,14 @@
     - name: displaying noobaa-db-pg-0 deployment status
       debug:
         var: r_ocs_noobaa_status.resources[0].status.phase
-      ignore_errors: false
+      ignore_errors: true
       when: not delete_deployment | bool
       tags: quay
 
     - name: Setting nooba variable
       set_fact:
         noobaaa_status: Running
+      ignore_errors: true
       when: r_ocs_noobaa_status.resources[0].status.phase != "Running"
 
     - name: deploy openshift storage operator
