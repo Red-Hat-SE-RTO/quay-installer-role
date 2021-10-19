@@ -15,22 +15,21 @@
 
     - name: Check noobaa-db-pg-0
       k8s_info:
+        api_key: "{{ openshift_token }}"
         kind: Pod
         label_selectors:
           - name = noobaa-db-pg-0
         field_selectors:
           - status.phase=Running
-        host: "{{ openshift_url }}"
-        validate_certs: "{{ insecure_skip_tls_verify }}"
-        api_key: "{{ openshift_token }}"
       ignore_errors: true
-      register: ocs_noobaa_status
+      register: r_ocs_noobaa_status
       tags: quay
 
     - name: displaying noobaa-db-pg-0 deployment status
       debug:
         var: r_ocs_noobaa_status.resources[0].status.phase
       ignore_errors: false
+      tags: quay
 
     - name: End the play 
       meta: end_host
