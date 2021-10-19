@@ -33,12 +33,17 @@
       when: not delete_deployment | bool
       tags: quay
 
+    - name: Setting nooba variable
+      set_fact:
+        noobaaa_status: Running
+      when: r_ocs_noobaa_status.resources[0].status.phase != "Running"
+
     - name: deploy openshift storage operator
       import_tasks: ./openshift-storage.yaml
       become: true
       when: 
         - ocs_project_result is failed
-        - r_ocs_noobaa_status.resources[0].status.phase != "Running"
+        - noobaaa_status is not defined
         -  not delete_deployment | bool
       tags: quay
 
