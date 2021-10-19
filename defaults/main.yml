@@ -1,10 +1,15 @@
 ---
 # defaults file for quay-installer-role
 
+# Temp file location
 config_location: "/tmp/"
+
+# Openshift Login info
 openshift_token: 1234567890
 openshift_url: https://api.ocp4.example.com:6443
 insecure_skip_tls_verify: false
+
+# Quay enterprise App settings
 quay_project_name: "quay-enterprise"
 quay_csv:  "red-hat-quay.v3.5.6"
 quay_channel: "quay-v3.5"
@@ -13,3 +18,6 @@ quay_pull_user: changeme
 quay_pull_password: changeme
 quay_admin_user: admin
 quay_admin_password: admin123
+
+# OpenShift Storage
+oc_version: 4.8 
