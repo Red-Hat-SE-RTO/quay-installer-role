@@ -15,8 +15,6 @@
 
     - name: Check noobaa-db-pg-0
       kubernetes.core.k8s_info:
-        api_key: "{{ openshift_token }}"
-        validate_certs: "{{ insecure_skip_tls_verify }}"
         host: "{{ openshift_url }}"
         kind: Pod
         label_selectors:

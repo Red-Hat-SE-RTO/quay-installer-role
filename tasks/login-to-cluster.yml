@@ -32,3 +32,9 @@
    - openshift_token|trim() != ""
   ignore_errors: no
   tags: always 
+
+- name: Log in (obtain access token)
+  community.kubernetes.k8s_auth:
+    host: "{{ openshift_url }}"
+    api_key: "{{ openshift_token }}"
+  #register: k8s_auth_results
