@@ -1,4 +1,4 @@
-Role Name
+Quay Installer Role
 =========
 
 A brief description of the role goes here.
