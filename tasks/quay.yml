@@ -127,15 +127,3 @@
   delay: 15
   ignore_errors: true
   tags: quay
-
-- name: create docker secret for quay
-  # yamllint disable-line rule:line-length
-  command: "{{ oc_location }} create secret docker-registry quay-auth-secret --docker-server={{ quay_urlprefix }}.apps.{{ domain }} --docker-username={{ quay_admin_user }} --docker-password={{ quay_admin_password }} -n {{ development_project }}"
-  tags: quay
-
-- name: link secrets to service accounts
-  command: "{{ oc_location }} secrets link {{ item }} quay-auth-secret -n {{ development_project }}"
-  with_items:
-    - default
-    - builder
-  tags: quay
