@@ -13,10 +13,26 @@
       changed_when: false
       tags: quay
 
+    - name: check if project openshift storage project exists
+      command: "{{ oc_location }} get pods noobaa-db-pg-0 -n openshift-storage | grep Running"
+      register: ocs_noobaa_result
+      ignore_errors: true
+      changed_when: false
+      tags: quay
+
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: ocs_noobaa_result
+        verbosity: 2
+
+    - name: End the play 
+      meta: end_host
+
     - name: deploy openshift storage operator
       import_tasks: ./openshift-storage.yaml
       become: true
-      when: ocs_project_result is failed
+      when: 
+        - ocs_project_result is failed
       tags: quay
 
     - name: Configure Quay 
