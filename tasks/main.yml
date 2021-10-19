@@ -21,6 +21,7 @@
           - name = noobaa-db-pg-0
         field_selectors:
           - status.phase=Running
+        namespace: openshift-storage
       ignore_errors: true
       register: r_ocs_noobaa_status
       tags: quay
