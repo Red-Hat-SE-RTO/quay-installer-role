@@ -22,3 +22,6 @@ quay_admin_password: admin123
 
 # OpenShift Storage
 oc_version: 4.8 
+
+# Clean up deployment 
+delete_deployment: false
