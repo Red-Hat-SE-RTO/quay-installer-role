@@ -15,7 +15,7 @@ pip3 install openshift
 ```
 * Ansible Collections
 ```
- ansible-galaxy install -r requirements.yml
+ansible-galaxy  collection   install -r  roles/requirements.yml
 ```
 
 Role Variables
