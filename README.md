@@ -84,8 +84,8 @@ Including an example of how to use your role (for instance, with variables passe
     vars:
       openshift_url: https://api.ocp4.example.com:6443
       openshift_token: sha256~xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      insecure_skip_tls_verify: Location of config files |false
-      delete_deployment: Location of config files |false 
+      insecure_skip_tls_verify: false
+      delete_deployment: false 
       domain: ocp4.example.com
       quay_urlprefix: "quayecosystem-quay-{{ quay_project_name }}.router-default"
       quay_csv: "red-hat-quay.v3.5.6"
